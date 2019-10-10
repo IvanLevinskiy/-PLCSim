@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Лифт_PLCSim.UControls.FC_Signal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Лифт_PLCSim.UControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="5" d:DesignWidth="15" DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="2"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid HorizontalAlignment="Left">
+            <TextBlock Text="{Binding Text}" VerticalAlignment="Center" TextAlignment="Left" HorizontalAlignment="Left"/>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Viewbox>
+                <Canvas Height="408" Width="408">
+                    <Polygon Points="204,102 204,0 408,204 204,408 204,306 0,306 0,102" Stroke="{Binding Stroke}" Fill="{Binding Fill}" StrokeThickness="20" Canvas.Left="2.245"/>
+                </Canvas>
+            </Viewbox>
+            <TextBlock Text="{Binding Address}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,2,0"/>
+        </Grid>
+    </Grid>
+</UserControl>

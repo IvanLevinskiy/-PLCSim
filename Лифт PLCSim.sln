@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29001.49
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Лифт PLCSim", "Лифт PLCSim\Лифт PLCSim.csproj", "{D31E5DA3-B09F-4209-BFB4-EAD711990699}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D31E5DA3-B09F-4209-BFB4-EAD711990699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31E5DA3-B09F-4209-BFB4-EAD711990699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31E5DA3-B09F-4209-BFB4-EAD711990699}.Debug|x64.ActiveCfg = Debug|x64
+		{D31E5DA3-B09F-4209-BFB4-EAD711990699}.Debug|x64.Build.0 = Debug|x64
+		{D31E5DA3-B09F-4209-BFB4-EAD711990699}.Debug|x86.ActiveCfg = Debug|x86
+		{D31E5DA3-B09F-4209-BFB4-EAD711990699}.Debug|x86.Build.0 = Debug|x86
+		{D31E5DA3-B09F-4209-BFB4-EAD711990699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31E5DA3-B09F-4209-BFB4-EAD711990699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D31E5DA3-B09F-4209-BFB4-EAD711990699}.Release|x64.ActiveCfg = Release|x64
+		{D31E5DA3-B09F-4209-BFB4-EAD711990699}.Release|x64.Build.0 = Release|x64
+		{D31E5DA3-B09F-4209-BFB4-EAD711990699}.Release|x86.ActiveCfg = Release|x86
+		{D31E5DA3-B09F-4209-BFB4-EAD711990699}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2D48995-82F5-49E0-8AA3-5C76F8B72A78}
+	EndGlobalSection
+EndGlobal
