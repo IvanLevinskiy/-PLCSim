@@ -28,8 +28,15 @@ namespace Лифт_PLCSim
                 liftPosition = value;
 
                 //Ограничения
-                if (value > 514) liftPosition = 514;
-                if (value < 0) liftPosition = 0;
+                if (value > 514)
+                {
+                    liftPosition = 514;
+                }
+
+                if (value < 0)
+                {
+                    liftPosition = 0;
+                }
 
                 //Передаем позицию в концевик
                 LS_2_0.Position = LS_2_1.Position = LS_2_2.Position = liftPosition;

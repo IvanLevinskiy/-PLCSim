@@ -37,9 +37,10 @@
             <Setter Property="Height" Value="44"/>
             <Setter Property="Width" Value="44"/>
             <Setter Property="Background" Value="#FF001823"/>
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate>
+                    <ControlTemplate TargetType="Button">
                         <Viewbox>
                             <Grid Height="44" Width="44">
                                 <Polygon Points="0,0 44,0 21,44" Stroke="White" StrokeThickness="2" Fill="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"/>
@@ -49,6 +50,9 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Margin" Value="1"/>
+                                <Setter Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
                                 <Setter Property="Opacity" Value="0.5"/>
                             </Trigger>
                             
@@ -69,9 +73,10 @@
             <Setter Property="Height" Value="44"/>
             <Setter Property="Width" Value="44"/>
             <Setter Property="Background" Value="#FF001823"/>
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate>
+                    <ControlTemplate TargetType="Button">
                         <Viewbox>
                             <Grid Height="44" Width="44">
                                 <Polygon Points="44,44 0,44 21,0" Stroke="White" StrokeThickness="2" Fill="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"/>
@@ -81,6 +86,9 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Margin" Value="1"/>
+                                <Setter Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
                                 <Setter Property="Opacity" Value="0.5"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -100,7 +108,7 @@
             <Setter Property="Background" Value="Gray"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate>
+                    <ControlTemplate TargetType="Button">
                         <Viewbox>
                             <Grid Height="44" Width="44">
                                 <Rectangle RadiusX="5" RadiusY="5" Stroke="White" StrokeThickness="2" 
@@ -119,6 +127,9 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Margin" Value="1"/>
+                                <Setter Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
                                 <Setter Property="Opacity" Value="0.5"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -192,27 +203,104 @@
                         <Image x:Name="Down_png1" Height="13" Source="Image/Down.png" Stretch="Fill" Width="26"/>
                     </UControls:xButton>
 
-                    <UControls:xButton   Canvas.Top="146" Address="I0.7" Style="{StaticResource ResourceKey=BtnDOWN}">
+                    <UControls:xButton   Canvas.Top="146" 
+                                         Address="I0.7" 
+                                         Style="{StaticResource ResourceKey=BtnDOWN}">
                     </UControls:xButton>
-                    <Label Content="{Binding LiftPosition}" Canvas.Left="15" Canvas.Top="26" Foreground="White"/>
+                    
+                    <Label Content="{Binding LiftPosition}"
+                           Canvas.Left="15" 
+                           Canvas.Top="26" 
+                           Foreground="White"/>
 
                 </Canvas>
             </Viewbox>
         </Grid>
         <Grid Grid.Column="1">
             <StackPanel>
-                <Expander Header="УПРАВЛЕНИЕ ПОДКЛЮЧЕНИЕМ" IsExpanded="True">
-                    <StackPanel>
-                        <Button Content="ЗАПУСТИТЬ STEP7"  Click="Step7_Click" Margin="5,20,5,0"/>
-                        <Button Content="ЗАПУСТИТЬ PLCSIM"  Click="PLCSim_Click"/>
-                        <Button Content="ПОДКЛЮЧИТСЯ К PLCSIM" Click="Connect_Click" Margin="5,0,5,20"/>
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                    <Style TargetType="Button" x:Key="BtnStyle">
+                        <Setter Property="Margin" Value="5"/>
+                        <Setter Property="Height" Value="40"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+
+                                    <Border x:Name="border"
+                                            BorderBrush="LightGray" 
+                                            BorderThickness="2"
+                                            Cursor="Hand"
+                                            Background="#FF0374AA">
+
+                                        <TextBlock Foreground="White"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"
+                                                   Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"/>
+
+                                
+                                    </Border>
+                                    
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Opacity" Value="0.7"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Opacity" Value="0.5"/>
+                                            <Setter TargetName="border" Property="BorderBrush" Value="White"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </StackPanel.Resources>
+
+               
+
+                <Border Margin="10,10,0,0"
+                        BorderBrush="White"
+                        BorderThickness="2"
+                        CornerRadius="5">
+                    <StackPanel Margin="20">
+                        <!--<TextBlock Text="Подключение к Simatic PlcSim"/>-->
+                        <Button Content="Запустить Simatic PlcSim"
+                                Style="{StaticResource BtnStyle}"
+                                ToolTip="Нажатие на кнопку вызывает открытие Simatic S7 PlcSim"
+                                Click="PLCSim_Click">
+                        </Button>
+                        
+                        <Button Content="Подключиться к Simatic PlcSim" 
+                                Style="{StaticResource BtnStyle}"
+                                Click="Connect_Click" Margin="5,0,5,20"/>
                     </StackPanel>
-                </Expander>
-                <Expander Header="СИГНАЛЫ ОТ ДАТЧИКОВ" IsExpanded="True">
-                    <StackPanel>
-                        <TextBlock Text="{Binding PIW256, StringFormat=-ЭНКОДЕР ПОЛОЖЕНИЯ КАБИНЫ ЛИФТА: {0}}"  Foreground="DarkGray"/>
+                </Border>
+
+                <Border  Margin="10,10,0,0"
+                         BorderBrush="White"
+                         BorderThickness="2"
+                         CornerRadius="5">  
+                    <StackPanel Orientation="Vertical"
+                                Margin="20">
+                        <TextBlock>Сигналы:</TextBlock>
+                        <TextBlock>
+                            <Run Text="Энкодер положения кабины лифта [PIW256]:"/>
+                            <Run Text="{Binding PIW256}"/>
+                        </TextBlock>
+
+                        <TextBlock>
+                          <Run Text="Выход на ПЧ [PIW256]:"/>
+                          <Run Text="{Binding PIW256}"/>
+                        </TextBlock>
+
                     </StackPanel>
-                </Expander>
+                  
+                </Border>
+                
+             
+          
                 <Expander Header="ПРЕОБРАЗОВАТЕЛЬ ЧАСТОТЫ" IsExpanded="True">
                     <StackPanel>
                         <UControls:FrequencyConverter x:Name="FC" Margin="5,40,5,20"/>

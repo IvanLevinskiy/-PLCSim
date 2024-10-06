@@ -17,9 +17,15 @@ namespace Лифт_PLCSim.UControls
 
         #region ПОЛЯ И СВОЙСТВА
 
+        //номер бита
         private int Bit_CNT;
+
+        //Номер байта
         private int Byte_CNT;
 
+        /// <summary>
+        /// Символьный адрес переменной
+        /// </summary>
         public string Address
         {
 
@@ -34,7 +40,9 @@ namespace Лифт_PLCSim.UControls
             }
         }
 
-
+        /// <summary>
+        /// Метод для разбора символьного адреса
+        /// </summary>
         private void ParseAddress()
         {
             //Парсим адрес
@@ -68,9 +76,17 @@ namespace Лифт_PLCSim.UControls
 
         }
 
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
         public xButton()
         {
             descriptor.AddValueChanged(this, new EventHandler(ButtonPropertyChanged));
+
+            this.Loaded += (s, e) =>
+            {
+                ParseAddress();
+            };
         }
 
 
