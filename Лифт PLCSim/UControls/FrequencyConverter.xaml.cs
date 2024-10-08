@@ -107,11 +107,29 @@ namespace Лифт_PLCSim.UControls
         private void Signals_StateChange()
         {
             State = S1.State && S2.State && S3.State && S4.State && S5.State && S6.State;
+
+            if(State == false)
+            {
+                Stroke = Brushes.Red;
+                return;
+            }
+
+            Stroke = Brushes.Green;
+
         }
 
         public FrequencyConverter()
         {
             InitializeComponent();
+
+            S1.StateChange += Signals_StateChange;
+            S2.StateChange += Signals_StateChange;
+            S3.StateChange += Signals_StateChange;
+            S4.StateChange += Signals_StateChange;
+            S5.StateChange += Signals_StateChange;
+            S6.StateChange += Signals_StateChange;
+
+            Signals_StateChange();
         }
 
 

@@ -141,18 +141,21 @@ namespace Лифт_PLCSim.UControls
             Timer.Start();
 
         }
+
+        private bool BitState = false;
+
         //Тик таймера
         private void Timer_Tick(object sender, EventArgs e)
         {
             #region ЧТЕНИЕ КОМАНД ИЗ СИМУЛЯТОРА
 
-            bool BitState = SIMULATOR.ReadOutputBit(Byte_CNT, Bit_CNT);
+            bool cBitState = SIMULATOR.ReadOutputBit(Byte_CNT, Bit_CNT);
 
             #endregion
 
             #region УПРАВЛЕНИЕ ЦВЕТОМ СТРЕЛКИ
 
-            if (BitState == true)
+            if (cBitState == true)
             {
                 State = true;
 
@@ -170,6 +173,15 @@ namespace Лифт_PLCSim.UControls
                 Fill = new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0x0, 0x0));
                 Fill.Opacity = 0.2;
             }
+
+            if (cBitState != BitState)
+            {
+                this.StateChange?.Invoke();
+            }
+
+            BitState = cBitState;
+
+
 
             #endregion
 

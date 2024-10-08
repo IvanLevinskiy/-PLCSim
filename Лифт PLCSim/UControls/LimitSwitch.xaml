@@ -14,6 +14,15 @@
                 <!--<TextBlock Text="{Binding Address}" Foreground="{Binding Textcolor}"/>-->
                 <TextBlock Text="{Binding Address}" Foreground="{Binding Color}" FontSize="90" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
+
+            <Viewbox.ToolTip>
+                <TextBlock>
+                   <Run>Концевой выключатель</Run>
+                   <LineBreak/>
+                   <Run>Вход ПЛК:</Run>
+                   <Run Foreground="Red" Text="{Binding Address}"></Run>
+                </TextBlock>
+            </Viewbox.ToolTip>
         </Viewbox>
     </Grid>
 </UserControl>

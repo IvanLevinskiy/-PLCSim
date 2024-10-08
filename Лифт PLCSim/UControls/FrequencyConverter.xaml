@@ -24,9 +24,9 @@
                 <local:FC_Signal x:Name="S4"  Height="10" Canvas.Top="38" Width="33.333" Address="Q11.3" Text="ENABLE OPERATION" Canvas.Left="1.667"/>
                 <local:FC_Signal x:Name="S5"  Height="10" Canvas.Top="50" Width="33.333" Address="Q11.2" Text="NO QUICK STOP (OFF3)" Canvas.Left="1.667"/>
                 <local:FC_Signal x:Name="S6"  Height="10" Canvas.Top="62" Width="33.333" Address="Q11.6" Text="ENABLE SETPOINT" Canvas.Left="1.667"/>
-                <Viewbox Height="22.5" Width="28.25" Canvas.Left="70" Canvas.Top="26">
+                <Viewbox Height="22" Width="28" Canvas.Left="70" Canvas.Top="26" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Canvas Height="408" Width="408">
-                        <Polygon Points="204,102 204,0 408,204 204,408 204,306 0,306 0,102" Stroke="{Binding Stroke}" Fill="{Binding Fill}" StrokeThickness="20" Canvas.Left="2.245"/>
+                        <Polygon Points="204,102 204,0 408,204 204,408 204,306 0,306 0,102" Stroke="{Binding Stroke}" Fill="{Binding Fill}" StrokeThickness="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </Canvas>
                 </Viewbox>
             </Canvas>

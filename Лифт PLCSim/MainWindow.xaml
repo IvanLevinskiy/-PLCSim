@@ -8,7 +8,7 @@
         Title="СИМУЛЯТОР ЛИФТА (SIMATIC PLCSIM)" ResizeMode="NoResize" Height="880" Width="1000" Icon="Image/icon.ico" Background="#FF002232" DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <Window.Resources>
-       
+
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#FF0374AA"/>
             <Setter Property="Foreground" Value="White"/>
@@ -16,7 +16,7 @@
             <Setter Property="Height" Value="40"/>
             <Setter Property="Focusable" Value="False"/>
         </Style>
-        
+
         <Style TargetType="{x:Type Expander}">
             <Setter Property="Focusable" Value="False"/>
             <Setter Property="BorderBrush" Value="White"/>
@@ -40,13 +40,50 @@
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="Button">
+                    <ControlTemplate TargetType="UControls:xButton">
                         <Viewbox>
                             <Grid Height="44" Width="44">
-                                <Polygon Points="0,0 44,0 21,44" Stroke="White" StrokeThickness="2" Fill="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                <TextBlock Text="{Binding Address, RelativeSource={RelativeSource TemplatedParent}}" Foreground="White" TextAlignment="Center"/>
+                                <!--<Polygon Points="0,0 44,0 21,44" Stroke="White" StrokeThickness="2" Fill="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"/>-->
+                              
+                                <Viewbox>
+                                    <Canvas Height="24" Width="24" RenderTransformOrigin="0.5,0.5">
+                                        <Canvas.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform Angle="180"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </Canvas.RenderTransform>
+                                        <Path Data="M10.2934 4.79256C11.0733 3.51643 12.9267 3.51643 13.7066 4.79256L21.1404 16.9571C21.9549 18.2898 20.9957 20 
+                                                    19.4339 20H4.56611C3.00425 20 2.04512 18.2898 2.85955 16.9571L10.2934 4.79256Z" 
+                                              Stroke="White"
+                                              Fill="Gray"
+                                              StrokeThickness="2"/>
+
+                                    </Canvas>
+                                </Viewbox>
+
+                                <TextBlock Text="{Binding Address, RelativeSource={RelativeSource TemplatedParent}}"
+                                           FontWeight="DemiBold"
+                                           Foreground="Black" 
+                                           FontSize="10"
+                                           Margin="0,8,0,0"
+                                           TextAlignment="Center"/>
+
                             </Grid>
+
+                            <Viewbox.ToolTip>
+                                <TextBlock>
+                                    <Run>Кнопка на двери лифта</Run>
+                                    <LineBreak/>
+                                    <Run>Вход ПЛК:</Run>
+                                    <Run Foreground="Red" Text="{Binding Address, RelativeSource={RelativeSource TemplatedParent}}"></Run>
+                                </TextBlock>
+                            </Viewbox.ToolTip>
+
                         </Viewbox>
+                       
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Margin" Value="1"/>
@@ -55,7 +92,7 @@
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter Property="Opacity" Value="0.5"/>
                             </Trigger>
-                            
+
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -79,9 +116,36 @@
                     <ControlTemplate TargetType="Button">
                         <Viewbox>
                             <Grid Height="44" Width="44">
-                                <Polygon Points="44,44 0,44 21,0" Stroke="White" StrokeThickness="2" Fill="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                <TextBlock Text="{Binding Address, RelativeSource={RelativeSource TemplatedParent}}" Foreground="White" TextAlignment="Center" VerticalAlignment="Bottom"/>
+
+                                <Viewbox>
+                                    <Canvas Height="24" Width="24" RenderTransformOrigin="0.5,0.5">
+                                     
+                                        <Path Data="M10.2934 4.79256C11.0733 3.51643 12.9267 3.51643 13.7066 4.79256L21.1404 16.9571C21.9549 18.2898 20.9957 20 19.4339 20H4.56611C3.00425 20 2.04512 18.2898 2.85955 16.9571L10.2934 4.79256Z" 
+                                             Stroke="White"
+                                             Fill="Gray"
+                                             StrokeThickness="2"/>
+
+                                    </Canvas>
+                                </Viewbox>
+
+                                <TextBlock Text="{Binding Address, RelativeSource={RelativeSource TemplatedParent}}"
+                                           FontWeight="DemiBold"
+                                           Foreground="Black" 
+                                           FontSize="10"
+                                           Margin="0,20,0,0"
+                                           TextAlignment="Center"/>
+
                             </Grid>
+
+                            <Viewbox.ToolTip>
+                                <TextBlock>
+                                      <Run>Кнопка на двери лифта</Run>
+                                      <LineBreak/>
+                                      <Run>Вход ПЛК:</Run>
+                                      <Run Foreground="Red" Text="{Binding Address, RelativeSource={RelativeSource TemplatedParent}}"></Run>
+                                </TextBlock>
+                            </Viewbox.ToolTip>
+
                         </Viewbox>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -113,20 +177,29 @@
                             <Grid Height="44" Width="44">
                                 <Rectangle RadiusX="5" RadiusY="5" Stroke="White" StrokeThickness="2" 
                                            Fill="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                
+
                                 <TextBlock Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" 
                                            Foreground="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                                            TextAlignment="Center" VerticalAlignment="Center" FontSize="13"/>
-                                
+
                                 <TextBlock Text="{Binding Address, RelativeSource={RelativeSource TemplatedParent}}" 
                                            Foreground="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                                            TextAlignment="Right" VerticalAlignment="Top" FontSize="10" Margin="0,0,5,0" FontWeight="Medium"/>
-                                
+
                             </Grid>
+
+                            <Viewbox.ToolTip>
+                                <TextBlock>
+                                   <Run>Кнопка в кабине лифта</Run>
+                                   <LineBreak/>
+                                   <Run>Вход ПЛК:</Run>
+                                   <Run Foreground="Red" Text="{Binding Address, RelativeSource={RelativeSource TemplatedParent}}"></Run>
+                                </TextBlock>
+                            </Viewbox.ToolTip>
+
                         </Viewbox>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Margin" Value="1"/>
                                 <Setter Property="Opacity" Value="0.7"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
@@ -172,7 +245,9 @@
 
                         <StackPanel>
                             <Grid  Margin="0,10,0,0" >
-                                <UControls:xButton Address="I0.0"  Content="1" Style="{StaticResource ResourceKey=BtnIn}" />
+                                <UControls:xButton Address="I0.0"  
+                                                   Content="1" 
+                                                   Style="{StaticResource ResourceKey=BtnIn}" />
                             </Grid>
                             <Grid>
                                 <UControls:xButton Address="I0.1" Content="2" Style="{StaticResource ResourceKey=BtnIn}"/>
@@ -189,25 +264,63 @@
                         <UControls:DoorCabinet x:Name="DoorCabine" VerticalAlignment="Bottom" Height="140" Margin="195,0,0,0" LS_UP_ADDR="I1.7" LS_DOWN_ADDR="I1.6" DRIVE_UP="Q1.7" DRIVE_DOWN="Q1.6"/>
                     </Grid>
 
-                    <UControls:Door x:Name="Door_1" Canvas.Left="362" Canvas.Top="537" LS_UP_ADDR="I1.0" LS_DOWN_ADDR="I1.1" Height="140" DRIVE_UP="Q1.0" DRIVE_DOWN="Q1.1" Width="72"/>
+                    <UControls:Door x:Name="Door_1" 
+                                    Canvas.Left="362" 
+                                    Canvas.Top="537" 
+                                    LS_UP_ADDR="I1.0" 
+                                    LS_DOWN_ADDR="I1.1" 
+                                    Height="140" 
+                                    DRIVE_UP="Q1.0" 
+                                    DRIVE_DOWN="Q1.1" 
+                                    Width="72"/>
 
-                    <UControls:Door x:Name="Door_3" Canvas.Left="362" Canvas.Top="71" LS_UP_ADDR="I1.4" LS_DOWN_ADDR="I1.5" Height="140" DRIVE_UP="Q1.4" DRIVE_DOWN="Q1.5" Width="72"/>
+                    <UControls:Door x:Name="Door_3" 
+                                    Canvas.Left="362" 
+                                    Canvas.Top="71" 
+                                    LS_UP_ADDR="I1.4" 
+                                    LS_DOWN_ADDR="I1.5" 
+                                    Height="140" 
+                                    DRIVE_UP="Q1.4" 
+                                    DRIVE_DOWN="Q1.5" 
+                                    Width="72"/>
 
                     <UControls:Door x:Name="Door_2" Canvas.Left="362.5" Canvas.Top="301" LS_UP_ADDR="I1.2" LS_DOWN_ADDR="I1.3" Height="140" DRIVE_UP="Q1.2" DRIVE_DOWN="Q1.3" Width="72"/>
 
-                    <UControls:xButton Address="I0.4"  Canvas.Top="564" Style="{StaticResource ResourceKey=BtnUP}"/>
+                    <UControls:xButton Address="I0.4"  
+                                       Canvas.Top="564" 
+                                       Style="{StaticResource ResourceKey=BtnUP}">
+                        <UControls:xButton.ToolTip>
+                            <TextBlock>
+                                <Run>Кнопка на двери лифта</Run>
+                                <LineBreak/>
+                                <Run>Вход ПЛК: I0.6</Run>
+                            </TextBlock>
+                        </UControls:xButton.ToolTip>
+                    </UControls:xButton>
 
-                    <UControls:xButton Canvas.Top="315" Address="I0.6" Style="{StaticResource ResourceKey=BtnUP}"/>
+                    <UControls:xButton Canvas.Top="315" 
+                                       Address="I0.6" 
+                                       Style="{StaticResource ResourceKey=BtnUP}"/>
 
-                    <UControls:xButton Canvas.Top="381" Style="{StaticResource ResourceKey=BtnDOWN}" Address="I0.5">
-                        <Image x:Name="Down_png1" Height="13" Source="Image/Down.png" Stretch="Fill" Width="26"/>
+                    <UControls:xButton Canvas.Top="381" Style="{StaticResource ResourceKey=BtnDOWN}" 
+                                       Address="I0.5">
+
+                        <!--<Image x:Name="Down_png1" Height="13" Source="Image/Down.png" Stretch="Fill" Width="26"/>-->
                     </UControls:xButton>
 
                     <UControls:xButton   Canvas.Top="146" 
                                          Address="I0.7" 
+                                         
                                          Style="{StaticResource ResourceKey=BtnDOWN}">
+                        <UControls:xButton.ToolTip>
+                            <TextBlock>
+                                <Run>Кнопка на двери лифта</Run>
+                                <LineBreak/>
+                                <Run>Вход ПЛК: I0.7</Run>
+                            </TextBlock>
+                        </UControls:xButton.ToolTip>
                     </UControls:xButton>
-                    
+
                     <Label Content="{Binding LiftPosition}"
                            Canvas.Left="15" 
                            Canvas.Top="26" 
@@ -240,9 +353,9 @@
                                                    HorizontalAlignment="Center"
                                                    Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"/>
 
-                                
+
                                     </Border>
-                                    
+
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Opacity" Value="0.7"/>
@@ -258,7 +371,7 @@
                     </Style>
                 </StackPanel.Resources>
 
-               
+
 
                 <Border Margin="10,10,0,0"
                         BorderBrush="White"
@@ -271,7 +384,7 @@
                                 ToolTip="Нажатие на кнопку вызывает открытие Simatic S7 PlcSim"
                                 Click="PLCSim_Click">
                         </Button>
-                        
+
                         <Button Content="Подключиться к Simatic PlcSim" 
                                 Style="{StaticResource BtnStyle}"
                                 Click="Connect_Click" Margin="5,0,5,20"/>
@@ -281,7 +394,7 @@
                 <Border  Margin="10,10,0,0"
                          BorderBrush="White"
                          BorderThickness="2"
-                         CornerRadius="5">  
+                         CornerRadius="5">
                     <StackPanel Orientation="Vertical"
                                 Margin="20">
                         <TextBlock>Сигналы:</TextBlock>
@@ -296,11 +409,11 @@
                         </TextBlock>
 
                     </StackPanel>
-                  
+
                 </Border>
-                
-             
-          
+
+
+
                 <Expander Header="ПРЕОБРАЗОВАТЕЛЬ ЧАСТОТЫ" IsExpanded="True">
                     <StackPanel>
                         <UControls:FrequencyConverter x:Name="FC" Margin="5,40,5,20"/>
